@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Happy Birthday Khánh Ngọc 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #ffd6e8;
+}
+
+
+/* =========================
+   MÀN HÌNH BẮT ĐẦU
+========================= */
+
+#startScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 25px;
+
+    background:
+        radial-gradient(circle at center, #fff8fb 0%, #ffd5e7 55%, #ff9fc8 100%);
+}
+
+.start-title {
+    color: #d52f76;
+    font-size: clamp(25px, 7vw, 42px);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.start-text {
+    color: #8f3158;
+    font-size: clamp(16px, 4vw, 20px);
+    margin-bottom: 35px;
+}
+
+.start-button {
+    border: none;
+    outline: none;
+
+    padding: 17px 35px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #ff4f98, #e82f7d);
+
+    color: white;
+
+    font-size: clamp(17px, 4vw, 21px);
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(210, 40, 110, 0.35);
+
+    animation: buttonPulse 1.5s infinite;
+}
+
+.start-button:active {
+    transform: scale(0.92);
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+#videoScreen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    background: #000;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9000;
+}
+
+#birthdayVideo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* =========================
+   TRÁI TIM
+========================= */
+
+#heartScreen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center, #fff8fb, #ffddeb 50%, #ffacd0);
+
+    z-index: 8000;
+}
+
+.heart-title {
+    color: #d52f76;
+
+    font-size: clamp(21px, 5vw, 32px);
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    padding: 0 20px;
+}
+
+.big-heart {
+    font-size: clamp(105px, 28vw, 180px);
+
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    animation: heartbeat 1.25s infinite;
+
+    filter:
+        drop-shadow(0 0 10px #ff77ae)
+        drop-shadow(0 0 30px #ff4d96);
+}
+
+.big-heart:active {
+    transform: scale(0.85);
+}
+
+.heart-hint {
+    margin-top: 25px;
+
+    color: #a72861;
+
+    font-size: clamp(15px, 4vw, 19px);
+}
+
+
+/* =========================
+   THƯ
+========================= */
+
+#cardScreen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 15px;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(circle at 10% 10%, #fff 0%, transparent 25%),
+        radial-gradient(circle at 90% 20%, #ffd0e3 0%, transparent 30%),
+        linear-gradient(135deg, #ffd5e7, #ffb1d2, #ff91bf);
+
+    z-index: 7000;
+}
+
+.card {
+    width: min(94vw, 720px);
+
+    max-height: 92dvh;
+
+    overflow-y: auto;
+
+    padding: 30px 25px 35px;
+
+    text-align: center;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.96),
+            rgba(255,238,246,0.94)
+        );
+
+    border: 3px solid white;
+
+    box-shadow:
+        0 15px 50px rgba(180,40,100,0.25),
+        0 0 30px rgba(255,100,160,0.15);
+
+    animation: cardAppear 1.2s ease;
+}
+
+.letter {
+    font-size: clamp(55px, 14vw, 85px);
+
+    animation: letterFloat 2s infinite ease-in-out;
+}
+
+.happy {
+    color: #e73582;
+
+    font-size: clamp(36px, 9vw, 65px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #ff8cba;
+
+    animation: pinkGlow 2s infinite alternate;
+}
+
+.name {
+    margin-top: 15px;
+
+    color: #c42569;
+
+    font-size: clamp(22px, 5.5vw, 34px);
+
+    font-weight: bold;
+
+    line-height: 1.4;
+}
+
+.divider {
+    width: 75%;
+
+    height: 2px;
+
+    margin: 22px auto;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #ef8ab5,
+            transparent
+        );
+}
+
+.message {
+    text-align: left;
+
+    color: #6e2949;
+
+    font-size: clamp(15px, 3.8vw, 18px);
+
+    line-height: 1.85;
+}
+
+.message p {
+    margin-bottom: 17px;
+}
+
+.final-wish {
+    margin-top: 20px;
+
+    padding: 20px 15px;
+
+    border-radius: 22px;
+
+    color: #c12569;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe0ed,
+            #fff1f7
+        );
+
+    border: 1px solid #ffafd0;
+
+    font-size: clamp(16px, 4vw, 20px);
+
+    line-height: 1.7;
+
+    font-weight: 700;
+
+    box-shadow:
+        inset 0 0 20px rgba(255,150,195,0.15);
+}
+
+.signature {
+    margin-top: 22px;
+
+    color: #e73582;
+
+    font-size: 18px;
+
+    font-style: italic;
+}
+
+
+/* =========================
+   HIỆU ỨNG
+========================= */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -60px;
+
+    pointer-events: none;
+
+    z-index: 8500;
+
+    animation: floatUp 5s linear forwards;
+}
+
+.flower {
+    position: fixed;
+
+    top: -60px;
+
+    pointer-events: none;
+
+    z-index: 8500;
+
+    animation: flowerFall 7s linear forwards;
+}
+
+.confetti {
+    position: fixed;
+
+    top: -30px;
+
+    pointer-events: none;
+
+    z-index: 9000;
+
+    animation: confettiFall 4s linear forwards;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.2);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.14);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes buttonPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.7) translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes letterFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pinkGlow {
+
+    from {
+        text-shadow: 0 0 5px white;
+    }
+
+    to {
+        text-shadow:
+            0 0 12px white,
+            0 0 35px #ff579d;
+    }
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(0.7);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(80px)
+            scale(1.6)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes flowerFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(115vh)
+            translateX(100px)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(115vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   ĐIỆN THOẠI
+========================= */
+
+@media (max-width: 600px) {
+
+    #cardScreen {
+        align-items: flex-start;
+
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .card {
+        max-height: 94dvh;
+
+        border-radius: 28px;
+
+        padding:
+            25px
+            18px
+            30px;
+    }
+
+    .message {
+        line-height: 1.75;
+    }
+
+    .divider {
+        width: 85%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     MÀN HÌNH BẮT ĐẦU
+========================= -->
+
+<div id="startScreen">
+
+    <div class="start-title">
+        🎀 Một món quà nhỏ dành cho Khánh Ngọc 🎀
+    </div>
+
+    <div class="start-text">
+        Có một điều bất ngờ đang chờ em đó... 💗
+    </div>
+
+    <button
+        class="start-button"
+        onclick="startBirthday()"
+    >
+        💗 Bắt đầu món quà 💗
+    </button>
+
+</div>
+
+
+<!-- =========================
+     VIDEO
+========================= -->
+
+<div id="videoScreen">
+
+    <video
+        id="birthdayVideo"
+        playsinline
+        preload="auto"
+    >
+
+        <source
+            src="./CMSN.mp4"
+            type="video/mp4"
+        >
+
+        Trình duyệt của bạn không hỗ trợ video.
+
+    </video>
+
+</div>
+
+
+<!-- =========================
+     TRÁI TIM
+========================= -->
+
+<div id="heartScreen">
+
+    <div class="heart-title">
+        💗 Một điều đặc biệt dành cho em 💗
+    </div>
+
+    <div
+        class="big-heart"
+        onclick="openLetter()"
+    >
+        ❤️
+    </div>
+
+    <div class="heart-hint">
+        ✨ Chạm vào trái tim ✨
+    </div>
+
+</div>
+
+
+<!-- =========================
+     THƯ SINH NHẬT
+========================= -->
+
+<div id="cardScreen">
+
+    <div class="card">
+
+        <div class="letter">
+            💌
+        </div>
+
+        <div class="happy">
+            Happy Birthday
+        </div>
+
+        <div class="name">
+            💗 Chúc mừng sinh nhật Khánh Ngọc của chị nhaaaaa 🎂💗
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="message">
+
+            <p>
+                Chị rất vui khi năm nay lại được đón sinh nhật cùng em.
+                Vậy là em đã thêm một tuổi mới rùi đó.
+                Chị mong tuổi mới em sẽ ngày càng xinh đẹp hơn,
+                học giỏi hơn, biết suy nghĩ hơn và quan trọng nhất
+                là biết yêu thương, chăm sóc bản thân mình nhiều hơn nha.
+            </p>
+
+            <p>
+                Lâu lắm rồi chị mới làm quà chúc mừng kiểu này
+                nên có thể nó sẽ không còn được mượt mà mà sẽ hơi vấp xíu 😭
+                Chỉ mong khi xem được món quà này em sẽ cảm thấy vui
+                và biết rằng chị thương bé iu của chị nhiều lắm ớ 💗
+            </p>
+
+            <p>
+                Tuổi mới, chị mong em sẽ luôn vui vẻ, khỏe mạnh
+                và gặp thật nhiều điều may mắn, tốt đẹp.
+                Chúc những điều em mong muốn sẽ thành hiện thực...
+            </p>
+
+            <p>
+                Lên cấp 2 ròi, học ở môi trường mới đôi khi em
+                chưa bắt được nhịp học cùng thầy cô và các bạn
+                thì có những lúc em cảm thấy mệt mỏi hay buồn.
+                Nhưng mà nhớ nè, dù chuyện gì thì cũng đừng giữ
+                trong lòng quá lâu nha.
+            </p>
+
+            <p>
+                Cứ nhớ rằng phía sau em vẫn luôn có ba mẹ,
+                KaKa và có chị, dì ba.
+                Nếu em muốn chia sẻ mà ngại thì cứ nói với chị,
+                chị sẽ luôn lắng nghe em. 💗
+            </p>
+
+            <p>
+                Hai chị em mình đôi khi cũng chọc nhau rồi giận nhau,
+                nhưng dù thế nào thì em vẫn luôn là cô em gái
+                mà chị rất thương.
+            </p>
+
+        </div>
+
+        <div class="final-wish">
+
+            💗 Chúc em tuổi mới thật rực rỡ,
+            bình an và hạnh phúc. 💗
+
+            <br><br>
+
+            🎂 Chúc mừng sinh nhật em 🎂
+
+            <br>
+
+            <strong>
+                Khánh Ngọc - bé iu của cả nhà!!!! 💕
+            </strong>
+
+        </div>
+
+        <div class="signature">
+            Thương bé iu của chị nhiều lắm 💗✨
+        </div>
+
+        <div class="divider"></div>
+
+        <div style="font-size:22px;">
+            🌸 💕 🌷 💗 🌺 💕 🌸
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NHẠC
+========================= -->
+
+<audio
+    id="birthdayMusic"
+    preload="auto"
+>
+
+    <source
+        src="./birthday.M4A"
+        type="audio/mp4"
+    >
+
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+
+</audio>
+
+
+<script>
+
+/* =========================
+   LẤY CÁC PHẦN TỬ
+========================= */
+
+const startScreen =
+    document.getElementById("startScreen");
+
+const videoScreen =
+    document.getElementById("videoScreen");
+
+const video =
+    document.getElementById("birthdayVideo");
+
+const heartScreen =
+    document.getElementById("heartScreen");
+
+const cardScreen =
+    document.getElementById("cardScreen");
+
+const music =
+    document.getElementById("birthdayMusic");
+
+
+/* =========================
+   BẮT ĐẦU MÓN QUÀ
+========================= */
+
+function startBirthday() {
+
+    startScreen.style.display = "none";
+
+    videoScreen.style.display = "flex";
+
+    video.currentTime = 0;
+
+    video.play().catch(function(error) {
+
+        console.log(
+            "Video không tự chạy:",
+            error
+        );
+
+        video.controls = true;
+
+    });
+
+}
+
+
+/* =========================
+   VIDEO KẾT THÚC
+========================= */
+
+video.addEventListener(
+    "ended",
+    function() {
+
+        videoScreen.style.display = "none";
+
+        heartScreen.style.display = "flex";
+
+    }
+);
+
+
+/* =========================
+   MỞ THƯ
+========================= */
+
+function openLetter() {
+
+    heartScreen.style.display = "none";
+
+    cardScreen.style.display = "flex";
+
+    music.volume = 0.5;
+
+    music.currentTime = 0;
+
+    music.play().catch(function(error) {
+
+        console.log(
+            "Nhạc không tự chạy:",
+            error
+        );
+
+    });
+
+    createConfetti();
+
+    startHearts();
+
+    startFlowers();
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti() {
+
+    const symbols = [
+        "💗",
+        "💕",
+        "💖",
+        "🌸",
+        "✨"
+    ];
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "confetti";
+
+        item.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    * symbols.length
+                )
+            ];
+
+        item.style.left =
+            Math.random()
+            * 100
+            + "vw";
+
+        item.style.fontSize =
+            12
+            + Math.random()
+            * 15
+            + "px";
+
+        item.style.animationDelay =
+            Math.random()
+            * 1.5
+            + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(
+            function() {
+                item.remove();
+            },
+            7000
+        );
+
+    }
+
+}
+
+
+/* =========================
+   TIM BAY
+========================= */
+
+function startHearts() {
+
+    setInterval(
+        function() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            const symbols = [
+                "💗",
+                "💕",
+                "💖",
+                "💞",
+                "❤️"
+            ];
+
+            heart.innerHTML =
+                symbols[
+                    Math.floor(
+                        Math.random()
+                        * symbols.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random()
+                * 100
+                + "vw";
+
+            heart.style.fontSize =
+                18
+                + Math.random()
+                * 20
+                + "px";
+
+            heart.style.animationDuration =
+                4
+                + Math.random()
+                * 4
+                + "s";
+
+            document.body.appendChild(
+                heart
+            );
+
+            setTimeout(
+                function() {
+                    heart.remove();
+                },
+                8500
+            );
+
+        },
+        500
+    );
+
+}
+
+
+/* =========================
+   HOA RƠI
+========================= */
+
+function startFlowers() {
+
+    setInterval(
+        function() {
+
+            const flower =
+                document.createElement("div");
+
+            flower.className =
+                "flower";
+
+            const symbols = [
+                "🌸",
+                "🌷",
+                "🌺",
+                "🌼",
+                "💮"
+            ];
+
+            flower.innerHTML =
+                symbols[
+                    Math.floor(
+                        Math.random()
+                        * symbols.length
+                    )
+                ];
+
+            flower.style.left =
+                Math.random()
+                * 100
+                + "vw";
+
+            flower.style.fontSize =
+                18
+                + Math.random()
+                * 16
+                + "px";
+
+            flower.style.animationDuration =
+                5
+                + Math.random()
+                * 4
+                + "s";
+
+            document.body.appendChild(
+                flower
+            );
+
+            setTimeout(
+                function() {
+                    flower.remove();
+                },
+                9500
+            );
+
+        },
+        800
+    );
+
+}
+
+</script>
+
+</body>
+</html>
